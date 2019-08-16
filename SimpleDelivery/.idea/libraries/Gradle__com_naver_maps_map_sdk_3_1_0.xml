@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.naver.maps:map-sdk-3.1.0">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/map-sdk-3.1.0.aar/bcee0ba29971447e62f0d6848b34f723/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/map-sdk-3.1.0.aar/bcee0ba29971447e62f0d6848b34f723/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/map-sdk-3.1.0.aar/bcee0ba29971447e62f0d6848b34f723/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.naver.maps/map-sdk/3.1.0/bfdf93f78890a74ea79eb50334171307c9de50ed/map-sdk-3.1.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>
