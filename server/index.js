@@ -1,6 +1,3 @@
-const express = require("express");
-
-console.log("hello world!");
 var express = require("express");
 var bodyParser = require("body-parser");
 var app = express();

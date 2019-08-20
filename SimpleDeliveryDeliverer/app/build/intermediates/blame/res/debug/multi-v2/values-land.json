@@ -4,7 +4,7 @@
             "outputFile": "/Users/shim/Study/simple-delivery/SimpleDeliveryDeliverer/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
             "map": [
                 {
-                    "source": "/Users/shim/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/c8f4600643f08ea350bf94a57a85641b/res/values-land/values-land.xml",
+                    "source": "/Users/shim/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/f8115bd81b781f1dc476f036d9962a36/res/values-land/values-land.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/Users/shim/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/d3774c1a364d9f51a36a3e49da6cd6ae/res/values-land/values-land.xml",
+                    "source": "/Users/shim/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/4a6a55dee33a399a3d1422271c8b35aa/res/values-land/values-land.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

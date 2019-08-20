@@ -10,5 +10,5 @@ module.exports = {
     host: "localhost",
     user: "root",
     password: "wodud1078!",
-    database: "simple_delivery"
+    database: "testdb"
 };
