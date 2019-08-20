@@ -78,8 +78,8 @@ public class MyProfileFragment extends Fragment {
 
 
     public void uploadWithTransferUtility() {
-        final String KEY = "AKIAQVQRLMTGO6RCQHPI";
-        final String SECRET = "0gfZVbo6Gj/1oygXWdeTk2mtQ1uS19WUVcsPVWA3";
+        final String KEY = "YOUR_KEY";
+        final String SECRET = "YOUR_SECRET";
 
         BasicAWSCredentials credentials = new BasicAWSCredentials(KEY, SECRET);
         AmazonS3Client s3Client = new AmazonS3Client(credentials);
