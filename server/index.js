@@ -329,7 +329,7 @@ app.post("/fcm", middleware.checkToken, function(req, res) {
                 return;
             }
             console.log("send gcm success");
-            console.log(response);
+            console.log("response", response);
             res.sendStatus(200);
         });
     });
