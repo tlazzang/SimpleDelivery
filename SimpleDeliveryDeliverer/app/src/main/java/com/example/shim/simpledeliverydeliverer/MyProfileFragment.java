@@ -91,7 +91,7 @@ public class MyProfileFragment extends Fragment {
                         .s3Client(s3Client)
                         .build();
 
-// "jsaS3" will be the folder that contains the file
+        // "jsaS3" will be the folder that contains the file
         String fileName = "test.jpg";
         final File file = new File(getRealPathFromURI(imgUri));
         TransferObserver uploadObserver =

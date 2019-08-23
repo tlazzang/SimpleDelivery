@@ -48,7 +48,7 @@ public class ErrandFragment extends Fragment {
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(errandAdapter);
-        errandAdapter.sortByPrice();
+
         ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.spinner_array, android.R.layout.simple_spinner_item);
         filterSpinner.setAdapter(arrayAdapter);
@@ -79,6 +79,4 @@ public class ErrandFragment extends Fragment {
             }
         });
     }
-
-
 }

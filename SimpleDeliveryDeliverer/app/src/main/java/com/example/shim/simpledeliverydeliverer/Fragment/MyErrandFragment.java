@@ -32,6 +32,4 @@ public class MyErrandFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(myErrandAdapter);
     }
-
-
 }

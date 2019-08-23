@@ -30,8 +30,6 @@ server.listen(6060);
 
 //
 io.on("connection", function(socket) {
-    socket.emit("new message", { username: "shim jae young", message: "hello" });
-
     socket.on("sendToSomeone", function(message, destinationId) {
         var queryString = "SELECT socket_id FROM USER WHERE ID = ?";
         db.get().query(queryString, destinationId, function(err, results) {
@@ -40,8 +38,28 @@ io.on("connection", function(socket) {
                 return;
             }
 
+            var parseMessage = JSON.parse(message);
+            parseMessage.timestamp = new Date().getTime();
+            message = JSON.stringify(parseMessage);
+
             console.log("message from client > " + message);
+            //내가 보낸 메시지도 클라이언트에 표시되어야 하기 때문에 자기 자신의 소켓id로도 새 메시지 전송
+            io.to(socket.id).emit("new message", message);
+            //상대방에게 메시지 전송
             io.to(results[0].socket_id).emit("new message", message);
+
+            var sender_id = parseMessage.sender_id;
+            var receiver_id = parseMessage.receiver_id;
+            var contents = parseMessage.contents;
+            var timestamp = new Date().getTime();
+
+            queryString = "INSERT INTO message (sender_id, receiver_id, contents, timestamp) VALUES (?, ?, ?, ?)";
+            db.get().query(queryString, [sender_id, receiver_id, contents, timestamp], function(err, results) {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
+            });
         });
     });
 
@@ -111,14 +129,17 @@ app.post("/errand", middleware.checkToken, function(req, res) {
     var latitude = req.body.latitude;
     var longitude = req.body.longitude;
     var price = req.body.price;
+    var timestamp = new Date().getTime();
     var contents = req.body.contents;
     var status = 0; // 현재 심부름의 상태 0 = 진행 전, 1 = 진행 중, 2 = 진행 완료
-
     var queryString =
-        "INSERT INTO errand (buyer_id, destination, latitude, longitude, price, contents) VALUES (?, ?, ?, ?, ?, ?)";
-    db.get().query(queryString, [buyer_id, destination, latitude, longitude, price, contents], function(err, result) {
+        "INSERT INTO errand (buyer_id, destination, latitude, longitude, price, timestamp, contents) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    db.get().query(queryString, [buyer_id, destination, latitude, longitude, price, timestamp, contents], function(
+        err,
+        result
+    ) {
         if (err) {
-            console.log("error is occured");
+            console.log(err);
             return res.sendStatus(400);
         }
         console.log("errand insert success!");
@@ -243,7 +264,7 @@ app.patch("/errand", middleware.checkToken, function(req, res) {
 
 app.get("/message", middleware.checkToken, function(req, res) {
     var id = req.decoded.id;
-    var queryString = "SELECT * FROM message WHERE sender_id = ? OR reciever_id = ?";
+    var queryString = "SELECT * FROM message WHERE sender_id = ? OR receiver_id = ?";
 
     db.get().query(queryString, [id, id], function(err, results) {
         if (err) {
@@ -256,13 +277,13 @@ app.get("/message", middleware.checkToken, function(req, res) {
 
 app.post("/message", middleware.checkToken, function(req, res) {
     var sender_id = req.body.sender_id;
-    var reciever_id = req.body.reciever_id;
+    var receiver_id = req.body.receiver_id;
     var contents = req.body.contents;
-    var timestamp = req.body.timestamp;
+    var timestamp = new Date().getTime();
 
-    var queryString = "INSERT INTO (sender_id, reciever_id, contents, timestamp) message VALUES (?, ?, ?, ?)";
+    var queryString = "INSERT INTO (sender_id, receiver_id, contents, timestamp) message VALUES (?, ?, ?, ?)";
 
-    db.get().query(queryString, [sender_id, reciever_id, contents, timestamp], function(err, results) {
+    db.get().query(queryString, [sender_id, receiver_id, contents, timestamp], function(err, results) {
         if (err) {
             console.log("POST MESSAGE FAIL :", err);
         }
@@ -295,8 +316,6 @@ app.post("/fcm", middleware.checkToken, function(req, res) {
             },
             // 메시지 중요도
             priority: "high",
-            // App 패키지 이름
-            restricted_package_name: "com.example.shim.simpledelivery",
             // App에게 전달할 데이터
             data: {
                 num1: 2000,

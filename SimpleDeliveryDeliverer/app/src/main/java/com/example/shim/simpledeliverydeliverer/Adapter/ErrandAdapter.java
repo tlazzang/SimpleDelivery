@@ -14,6 +14,7 @@ import com.example.shim.simpledeliverydeliverer.IndexActivity;
 import com.example.shim.simpledeliverydeliverer.Model.Errand;
 import com.example.shim.simpledeliverydeliverer.Network.ErrandService;
 import com.example.shim.simpledeliverydeliverer.R;
+import com.example.shim.simpledeliverydeliverer.RetrofitInstance;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -37,10 +38,7 @@ public class ErrandAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public ErrandAdapter(Context context) {
         this.context = context;
 
-        retrofit = new Retrofit.Builder()
-                .baseUrl("http://13.209.21.97:5050/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        retrofit = RetrofitInstance.getInstance();
 
         ErrandService service = retrofit.create(ErrandService.class);
         String token = context.getSharedPreferences("pref", 0).getString("token", "");

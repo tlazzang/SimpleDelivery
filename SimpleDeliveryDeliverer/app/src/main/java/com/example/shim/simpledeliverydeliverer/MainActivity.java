@@ -55,10 +55,7 @@ public class MainActivity extends AppCompatActivity {
         */
         if(sharedPreferences.contains("token")){
             //서버에 토큰 유효성 검사 후에 IndexActivity로 이동
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("http://13.209.21.97:5050/")
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
+            Retrofit retrofit = RetrofitInstance.getInstance();
 
             ErrandService service = retrofit.create(ErrandService.class);
             token = sharedPreferences.getString("token","");
@@ -106,10 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 //서버에 로그인 요청 보내기
                 else{
                     //안드로이드 에뮬레이터에서는 10.0.0.2가 localhost라고 한다.
-                    final Retrofit retrofit = new Retrofit.Builder()
-                            .baseUrl("http://13.209.21.97:5050/")
-                            .addConverterFactory(GsonConverterFactory.create())
-                            .build();
+                    final Retrofit retrofit = RetrofitInstance.getInstance();
 
                     ErrandService service = retrofit.create(ErrandService.class);
 
