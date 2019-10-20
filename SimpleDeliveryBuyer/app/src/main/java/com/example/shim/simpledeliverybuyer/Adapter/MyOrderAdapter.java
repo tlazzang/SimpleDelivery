@@ -18,10 +18,10 @@ import com.example.shim.simpledeliverybuyer.Fragment.OrderDetailFragment;
 import com.example.shim.simpledeliverybuyer.Model.Errand;
 import com.example.shim.simpledeliverybuyer.Network.ErrandService;
 import com.example.shim.simpledeliverybuyer.R;
+import com.example.shim.simpledeliverybuyer.RetrofitInstance;
 
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -30,7 +30,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MyOrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<Errand> errandList = new ArrayList<>();
@@ -41,10 +40,7 @@ public class MyOrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public MyOrderAdapter(Context context) {
         this.context = context;
         myId = context.getSharedPreferences("pref", 0).getInt("myId", 0);
-        retrofit = new Retrofit.Builder()
-                .baseUrl("http://13.209.21.97:5050/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        retrofit = RetrofitInstance.getInstance();
 
         ErrandService service = retrofit.create(ErrandService.class);
         String token = context.getSharedPreferences("pref", 0).getString("token", "");

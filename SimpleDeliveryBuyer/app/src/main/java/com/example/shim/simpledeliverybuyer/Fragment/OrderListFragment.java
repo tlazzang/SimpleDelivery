@@ -33,7 +33,5 @@ public class OrderListFragment extends Fragment {
         myOrderAdapter = new MyOrderAdapter(getActivity());
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(myOrderAdapter);
-
     }
-
 }

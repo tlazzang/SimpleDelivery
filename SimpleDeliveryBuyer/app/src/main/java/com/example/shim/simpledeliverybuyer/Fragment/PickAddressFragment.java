@@ -218,11 +218,9 @@ public class PickAddressFragment extends Fragment implements OnMapReadyCallback 
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
                 }
-
                 return ;
             }
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
-
 }

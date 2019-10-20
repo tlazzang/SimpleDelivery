@@ -30,7 +30,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ChatActivity extends AppCompatActivity {
 
@@ -44,10 +43,9 @@ public class ChatActivity extends AppCompatActivity {
     private String userId;
     private String destinationId;
     private String token;
-
     {
         try {
-            socket = IO.socket("http://13.209.21.97:6060/");
+            socket = IO.socket("http://10.0.2.2:6060/");
 
         } catch (URISyntaxException e) {
         }
@@ -141,10 +139,7 @@ public class ChatActivity extends AppCompatActivity {
             return;
         }
         socket.emit("sendToSomeone", gson.toJson(message), destinationId);
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://13.209.21.97:5050/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        Retrofit retrofit = RetrofitInstance.getInstance();
 
         ErrandService service = retrofit.create(ErrandService.class);
         Call<ResponseBody> call = service.sendFcm(token, Integer.parseInt(destinationId));

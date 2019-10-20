@@ -119,19 +119,10 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         void bind(Message message) {
             messageText.setText(message.getContents());
-
             Date date = new Date(message.getTimestamp());
             SimpleDateFormat format = new SimpleDateFormat("HH:mm");
             String now = format.format(date);
             timeText.setText(now);
-
-//            // Format the stored timestamp into a readable String using method.
-//            timeText.setText(Utils.formatDateTime(message.getCreatedAt()));
-//
-//            nameText.setText(message.getSender().getNickname());
-//
-//            // Insert the profile image from the URL into the ImageView.
-//            Utils.displayRoundImageFromUrl(mContext, message.getSender().getProfileUrl(), profileImage);
         }
     }
 }

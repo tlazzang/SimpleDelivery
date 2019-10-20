@@ -122,6 +122,42 @@ app.patch("/me", middleware.checkToken, function(req, res) {
     });
 });
 
+//배달자가 반경 몇 km 이내의 심부름만 푸시알람 받을 것인지 거리 설정.
+app.patch("/me/setting-distance", middleware.checkToken, function(req, res) {
+    var setting_distance = req.query.setting_distance;
+    var id = req.decoded.id;
+
+    var queryString = "UPDATE user SET setting_distance = ? WHERE id = ?";
+
+    db.get().query(queryString, [setting_distance, id], function(err, results) {
+        if (err) {
+            res.sendStatus(400);
+            console.log(err);
+            return;
+        }
+        res.sendStatus(200);
+        console.log("update setting_distance success");
+    });
+});
+
+app.patch("/me/location", middleware.checkToken, function(req, res) {
+    var latitude = req.query.latitude;
+    var longitude = req.query.longitude;
+    var id = req.decoded.id;
+
+    var queryString = "UPDATE user SET latitude = ?, longitude = ? WHERE id = ?";
+
+    db.get().query(queryString, [latitude, longitude, id], function(err, results) {
+        if (err) {
+            res.sendStatus(400);
+            console.log(err);
+            return;
+        }
+        res.sendStatus(200);
+        console.log("update location success");
+    });
+});
+
 //클라이언트로 부터 온 심부름 정보를 errand 테이블에 저장함.
 app.post("/errand", middleware.checkToken, function(req, res) {
     var buyer_id = req.decoded.id; //토큰에 해당하는 유저의 id값을 가져옴
@@ -144,6 +180,56 @@ app.post("/errand", middleware.checkToken, function(req, res) {
         }
         console.log("errand insert success!");
         res.sendStatus(200);
+    });
+
+    var queryString = "SELECT * FROM user WHERE id != ? AND fcm_token IS NOT NULL";
+    db.get().query(queryString, buyer_id, function(err, results) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        for (var i = 0; i < results.length; i++) {
+            var fcmToken = results[i].fcm_token;
+            var setting_distance = results[i].setting_distance;
+            if (setting_distance != undefined) {
+                var userLatitude = results[i].latitude;
+                var userLongitude = results[i].longitude;
+
+                console.log(getDistanceFromLatLonInKm(userLatitude, userLongitude, latitude, longitude));
+                //설정한 거리보다 먼 심부름일경우 푸시알람을 보내지 않음.
+                if (getDistanceFromLatLonInKm(userLatitude, userLongitude, latitude, longitude) > setting_distance) {
+                    continue;
+                }
+            }
+            var push_data = {
+                // 수신대상
+                to: fcmToken,
+                // App이 실행중이지 않을 때 상태바 알림으로 등록할 내용
+                notification: {
+                    title: "Hello Node",
+                    body: "새 심부름이 등록되었습니다.",
+                    sound: "default",
+                    click_action: "FCM_PLUGIN_ACTIVITY",
+                    icon: "fcm_push_icon"
+                },
+                // 메시지 중요도
+                priority: "high",
+                // App에게 전달할 데이터
+                data: {
+                    num1: 2000,
+                    num2: 3000
+                }
+            };
+            var fcm = new FCM(config.fcm_api_key);
+            fcm.send(push_data, function(err, response) {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
+                console.log("send gcm success");
+                console.log("response", response);
+            });
+        }
     });
 });
 
@@ -241,8 +327,6 @@ app.post("/user/signup", function(req, res) {
 app.patch("/errand", middleware.checkToken, function(req, res) {
     var id = req.query.id;
     var porter_id = req.decoded.id;
-    console.log(id, porter_id);
-    // var porter_id = req.decoded.id;
     var status = 1; // 진행 전 = 0, 진행 중 = 1, 진행 완료 = 2
 
     var queryString = "UPDATE errand SET porter_id = ? WHERE id = ?";
@@ -334,5 +418,21 @@ app.post("/fcm", middleware.checkToken, function(req, res) {
         });
     });
 });
+
+function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+    var R = 6371; // Radius of the earth in km
+    var dLat = deg2rad(lat2 - lat1); // deg2rad below
+    var dLon = deg2rad(lon2 - lon1);
+    var a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    var d = R * c; // Distance in km
+    return d;
+}
+
+function deg2rad(deg) {
+    return deg * (Math.PI / 180);
+}
 
 module.exports = app;

@@ -1948,6 +1948,10 @@
         "source": "/Users/shim/.gradle/caches/transforms-1/files-1.1/map-sdk-3.2.0.aar/d63ca766d7a532ecdbc3d5577058d16a/res/drawable-xxxhdpi-v4/navermap_zoom_div.png"
     },
     {
+        "merged": "/Users/shim/Study/simple-delivery/SimpleDeliveryDeliverer/app/build/intermediates/res/merged/debug/drawable_baseline_settings_applications_white_18dp.png.flat",
+        "source": "/Users/shim/Study/simple-delivery/SimpleDeliveryDeliverer/app/src/main/res/drawable/baseline_settings_applications_white_18dp.png"
+    },
+    {
         "merged": "/Users/shim/Study/simple-delivery/SimpleDeliveryDeliverer/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_navermap_location_none_normal.png.flat",
         "source": "/Users/shim/.gradle/caches/transforms-1/files-1.1/map-sdk-3.2.0.aar/d63ca766d7a532ecdbc3d5577058d16a/res/drawable-hdpi-v4/navermap_location_none_normal.png"
     },

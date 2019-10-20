@@ -13,13 +13,13 @@ import android.widget.Toast;
 import com.example.shim.simpledeliverybuyer.Model.Errand;
 import com.example.shim.simpledeliverybuyer.Network.ErrandService;
 import com.example.shim.simpledeliverybuyer.R;
+import com.example.shim.simpledeliverybuyer.RetrofitInstance;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class OrderFragment extends Fragment {
@@ -49,10 +49,7 @@ public class OrderFragment extends Fragment {
                     Toast.makeText(getActivity(), "심부름값에 숫자만 입력해주세요.", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://13.209.21.97:5050/")
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
+                Retrofit retrofit = RetrofitInstance.getInstance();
 
                 String destination = getArguments().getString("roadAddr");
                 double latitude = getArguments().getDouble("latitude", 0.0);
