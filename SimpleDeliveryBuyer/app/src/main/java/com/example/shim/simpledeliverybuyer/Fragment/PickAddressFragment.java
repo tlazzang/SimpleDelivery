@@ -26,6 +26,7 @@ import com.naver.maps.map.MapFragment;
 import com.naver.maps.map.NaverMap;
 import com.naver.maps.map.NaverMapSdk;
 import com.naver.maps.map.OnMapReadyCallback;
+import com.naver.maps.map.UiSettings;
 import com.naver.maps.map.util.FusedLocationSource;
 import com.naver.maps.map.widget.LocationButtonView;
 
@@ -74,7 +75,6 @@ public class PickAddressFragment extends Fragment implements OnMapReadyCallback 
         btn_position.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 OrderFragment orderFragment = new OrderFragment();
                 Bundle args = new Bundle();
 
@@ -86,7 +86,6 @@ public class PickAddressFragment extends Fragment implements OnMapReadyCallback 
                 args.putDouble("longitude", longitude);
                 args.putString("addr", addr);
                 args.putString("roadAddr", roadAddr);
-
 
                 orderFragment.setArguments(args);
                 getFragmentManager().beginTransaction().replace(R.id.index_frameLayout, orderFragment).commit();
@@ -125,8 +124,8 @@ public class PickAddressFragment extends Fragment implements OnMapReadyCallback 
     @Override
     public void onMapReady(@NonNull final NaverMap naverMap) {
         //지도에 현위치 버튼 표시
-//        uiSettings = naverMap.getUiSettings();
-//        uiSettings.setLocationButtonEnabled(true);
+        UiSettings uiSettings = naverMap.getUiSettings();
+        uiSettings.setLocationButtonEnabled(true);
 
         locationButtonView.setMap(naverMap);
 

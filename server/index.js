@@ -52,9 +52,14 @@ io.on("connection", function(socket) {
             var receiver_id = parseMessage.receiver_id;
             var contents = parseMessage.contents;
             var timestamp = new Date().getTime();
+            var errand_id = parseMessage.errand_id;
 
-            queryString = "INSERT INTO message (sender_id, receiver_id, contents, timestamp) VALUES (?, ?, ?, ?)";
-            db.get().query(queryString, [sender_id, receiver_id, contents, timestamp], function(err, results) {
+            queryString =
+                "INSERT INTO message (sender_id, receiver_id, contents, timestamp, errand_id) VALUES (?, ?, ?, ?, ?)";
+            db.get().query(queryString, [sender_id, receiver_id, contents, timestamp, errand_id], function(
+                err,
+                results
+            ) {
                 if (err) {
                     console.log(err);
                     return;
@@ -348,9 +353,10 @@ app.patch("/errand", middleware.checkToken, function(req, res) {
 
 app.get("/message", middleware.checkToken, function(req, res) {
     var id = req.decoded.id;
-    var queryString = "SELECT * FROM message WHERE sender_id = ? OR receiver_id = ?";
+    var errand_id = req.query.errandId;
+    var queryString = "SELECT * FROM message WHERE (sender_id = ? OR receiver_id = ?) AND errand_id = ?";
 
-    db.get().query(queryString, [id, id], function(err, results) {
+    db.get().query(queryString, [id, id, errand_id], function(err, results) {
         if (err) {
             console.log("GET MESSAGE FAIL :", err);
         }

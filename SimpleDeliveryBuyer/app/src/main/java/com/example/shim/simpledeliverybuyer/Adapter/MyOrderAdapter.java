@@ -21,7 +21,9 @@ import com.example.shim.simpledeliverybuyer.R;
 import com.example.shim.simpledeliverybuyer.RetrofitInstance;
 
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -90,49 +92,11 @@ public class MyOrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 OrderDetailFragment orderDetailFragment = new OrderDetailFragment();
                 orderDetailFragment.setArguments(args);
                 ((AppCompatActivity)context).getSupportFragmentManager().
-                        beginTransaction().replace(R.id.index_frameLayout, orderDetailFragment).commit();
+                        beginTransaction().replace(R.id.index_frameLayout, orderDetailFragment).addToBackStack("OrderListFragment").commit();
             }
         });
-        ((ErrandViewHolder) viewHolder).tv_address.setText(errand.getDestination());
-        ((ErrandViewHolder) viewHolder).tv_price.setText(String.valueOf(errand.getPrice()));
-        ((ErrandViewHolder) viewHolder).tv_contents.setText(errand.getContents());
-        ((ErrandViewHolder) viewHolder).btn_accpet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final ErrandService errandService = retrofit.create(ErrandService.class);
-                final String token = context.getSharedPreferences("pref", 0).getString("token", "");
-                Call<ResponseBody> call = errandService.updateErrand(token, errand.getId());
-                call.enqueue(new Callback<ResponseBody>() {
-                    @Override
-                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                        if (response.isSuccessful()) {
-                            Toast.makeText(context, "수락 완료", Toast.LENGTH_SHORT).show();
-                            //해당 심부름의 porter_id와 상태 업데이트 완료 후에 주문자한테 푸시 알람 전송
-                            call = errandService.sendFcm(token, errand.getBuyer_id());
-                            call.enqueue(new Callback<ResponseBody>() {
-                                @Override
-                                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                                    if (response.isSuccessful()) {
-                                        Toast.makeText(context, "fcm 전송 완료", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
 
-                                @Override
-                                public void onFailure(Call<ResponseBody> call, Throwable t) {
-
-                                }
-                            });
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<ResponseBody> call, Throwable t) {
-
-                    }
-                });
-                Toast.makeText(context, String.valueOf(i), Toast.LENGTH_SHORT).show();
-            }
-        });
+        ((ErrandViewHolder) viewHolder).bind(errand);
     }
 
     @Override
@@ -144,13 +108,23 @@ public class MyOrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         TextView tv_address;
         TextView tv_price;
         TextView tv_contents;
-        Button btn_accpet;
+        TextView tv_timestamp;
+
+        public void bind(Errand errand){
+            tv_address.setText(errand.getDestination());
+            tv_price.setText(String.format("%,d", errand.getPrice()) + "원");
+            tv_contents.setText(errand.getContents());
+            Date date = new Date(errand.getTimestamp());
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            String now = format.format(date);
+            tv_timestamp.setText(now);
+        }
         public ErrandViewHolder(View view) {
             super(view);
             tv_address = view.findViewById(R.id.errandList_tv_address);
             tv_price = view.findViewById(R.id.errandList_tv_price);
             tv_contents = view.findViewById(R.id.errandList_tv_contents);
-            btn_accpet = view.findViewById(R.id.errandList_btn_accept);
+            tv_timestamp = view.findViewById(R.id.errandList_tv_timestamp);
         }
     }
 }

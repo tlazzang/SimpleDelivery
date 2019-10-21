@@ -456,10 +456,6 @@
         "source": "/Users/shim/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/f8115bd81b781f1dc476f036d9962a36/res/color-v23/abc_tint_switch_track.xml"
     },
     {
-        "merged": "/Users/shim/Study/simple-delivery/SimpleDeliveryBuyer/app/build/intermediates/res/merged/debug/layout_notification_template_custom_big.xml.flat",
-        "source": "/Users/shim/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/c5bbc0113cefb49f367c1039e5bf32ab/res/layout/notification_template_custom_big.xml"
-    },
-    {
         "merged": "/Users/shim/Study/simple-delivery/SimpleDeliveryBuyer/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_launcher_foreground.png.flat",
         "source": "/Users/shim/Study/simple-delivery/SimpleDeliveryBuyer/app/build/generated/res/pngs/debug/drawable-mdpi/ic_launcher_foreground.png"
     },
@@ -2404,6 +2400,10 @@
         "source": "/Users/shim/.gradle/caches/transforms-1/files-1.1/map-sdk-3.2.0.aar/d63ca766d7a532ecdbc3d5577058d16a/res/drawable-xxxhdpi-v4/navermap_default_location_overlay_sub_icon_cone.png"
     },
     {
+        "merged": "/Users/shim/Study/simple-delivery/SimpleDeliveryBuyer/app/build/intermediates/res/merged/debug/drawable_baseline_call_black_24dp.png.flat",
+        "source": "/Users/shim/Study/simple-delivery/SimpleDeliveryBuyer/app/src/main/res/drawable/baseline_call_black_24dp.png"
+    },
+    {
         "merged": "/Users/shim/Study/simple-delivery/SimpleDeliveryBuyer/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
         "source": "/Users/shim/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/f8115bd81b781f1dc476f036d9962a36/res/drawable-xxhdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png"
     },
@@ -2734,6 +2734,10 @@
     {
         "merged": "/Users/shim/Study/simple-delivery/SimpleDeliveryBuyer/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_navermap_location_face_normal.png.flat",
         "source": "/Users/shim/.gradle/caches/transforms-1/files-1.1/map-sdk-3.2.0.aar/d63ca766d7a532ecdbc3d5577058d16a/res/drawable-xhdpi-v4/navermap_location_face_normal.png"
+    },
+    {
+        "merged": "/Users/shim/Study/simple-delivery/SimpleDeliveryBuyer/app/build/intermediates/res/merged/debug/drawable_baseline_chat_black_24dp.png.flat",
+        "source": "/Users/shim/Study/simple-delivery/SimpleDeliveryBuyer/app/src/main/res/drawable/baseline_chat_black_24dp.png"
     },
     {
         "merged": "/Users/shim/Study/simple-delivery/SimpleDeliveryBuyer/app/build/intermediates/res/merged/debug/drawable_navermap_zoom_in.xml.flat",

@@ -67,7 +67,8 @@ public class OrderFragment extends Fragment {
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                         if(response.isSuccessful()){
                             Toast.makeText(getActivity(), "의뢰가 완료되었습니다.", Toast.LENGTH_SHORT).show();
-
+                            OrderListFragment orderListFragment = new OrderListFragment();
+                            getFragmentManager().beginTransaction().replace(R.id.index_frameLayout, orderListFragment).commit();
                         }
                     }
 

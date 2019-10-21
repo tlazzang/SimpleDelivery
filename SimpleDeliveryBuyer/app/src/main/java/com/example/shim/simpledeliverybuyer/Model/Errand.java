@@ -29,7 +29,7 @@ public class Errand implements Serializable {
     private int price;
     @SerializedName("timestamp")
     @Expose
-    private double timestamp;
+    private long timestamp;
     @SerializedName("delete_dateTime")
     @Expose
     private Date delete_dateTime;
@@ -37,7 +37,7 @@ public class Errand implements Serializable {
     @Expose
     private String contents;
 
-    public Errand(int id, int buyer_id, int porter_id, String destination, double latitude, double longitude, int price, double timestamp, Date delete_dateTime, String contents) {
+    public Errand(int id, int buyer_id, int porter_id, String destination, double latitude, double longitude, int price, long timestamp, Date delete_dateTime, String contents) {
         this.id = id;
         this.buyer_id = buyer_id;
 
@@ -114,11 +114,11 @@ public class Errand implements Serializable {
         this.price = price;
     }
 
-    public double getTimestamp() {
+    public long getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(double timestamp) {
+    public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }
 

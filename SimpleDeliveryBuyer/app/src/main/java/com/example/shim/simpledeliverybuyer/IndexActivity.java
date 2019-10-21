@@ -1,5 +1,7 @@
 package com.example.shim.simpledeliverybuyer;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentManager;
@@ -75,8 +77,6 @@ public class IndexActivity extends AppCompatActivity {
                             Log.w("TEST", "getInstanceId failed", task.getException());
                             return;
                         }
-
-
                         Retrofit retrofit = RetrofitInstance.getInstance();
 
                         ErrandService service = retrofit.create(ErrandService.class);
@@ -102,5 +102,25 @@ public class IndexActivity extends AppCompatActivity {
                         Log.d("TEST", token);
                     }
                 });
+    }
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new android.app.AlertDialog.Builder(IndexActivity.this);
+        builder.setMessage("앱을 종료하시겠습니까?")
+                .setPositiveButton("네", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finishAffinity();
+                        dialog.dismiss();
+                    }
+                })
+                .setNegativeButton("아니오", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }

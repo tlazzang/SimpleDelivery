@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -24,6 +25,7 @@ public class ErrandFragment extends Fragment {
     private ErrandAdapter errandAdapter;
     private Spinner filterSpinner;
     private FloatingActionButton fab_setting;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,6 +48,7 @@ public class ErrandFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        swipeRefreshLayout = view.findViewById(R.id.errand_swipeRefreshLayout);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(errandAdapter);
 
@@ -76,6 +79,13 @@ public class ErrandFragment extends Fragment {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
+            }
+        });
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                errandAdapter.loadErrandFromServer();
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
     }

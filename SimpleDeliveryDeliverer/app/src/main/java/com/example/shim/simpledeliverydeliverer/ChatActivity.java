@@ -103,8 +103,7 @@ public class ChatActivity extends AppCompatActivity {
                     Message message = gson.fromJson(args[0].toString(), Message.class);
 
                     //나에게 메시지가 왔을 때 현재 채팅방에 전송된 메시지일 경우에만 어댑터에 메시지 추가
-                    if((message.getSender_id() == Integer.valueOf(destinationId) && message.getReceiver_id() == MainActivity.myId) ||
-                            (message.getSender_id() == MainActivity.myId && message.getReceiver_id() == Integer.valueOf(destinationId))){
+                    if(message.getErrand_id() == errand.getId()){
                         messageAdapter.addItem(message);
                         recyclerView.scrollToPosition(messageAdapter.getItemCount() - 1);
                     }

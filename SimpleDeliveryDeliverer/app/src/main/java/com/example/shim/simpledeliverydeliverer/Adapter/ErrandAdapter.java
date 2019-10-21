@@ -37,7 +37,10 @@ public class ErrandAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     public ErrandAdapter(Context context) {
         this.context = context;
+        loadErrandFromServer();
+    }
 
+    public void loadErrandFromServer(){
         retrofit = RetrofitInstance.getInstance();
 
         ErrandService service = retrofit.create(ErrandService.class);
@@ -78,7 +81,7 @@ public class ErrandAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         ((ErrandViewHolder)viewHolder).tv_timestamp.setText(now);
         ((ErrandViewHolder)viewHolder).tv_address.setText(errand.getDestination());
-        ((ErrandViewHolder)viewHolder).tv_price.setText(String.valueOf(errand.getPrice()));
+        ((ErrandViewHolder)viewHolder).tv_price.setText(String.format("%,d", errand.getPrice()) + "원");
         ((ErrandViewHolder)viewHolder).tv_contents.setText(errand.getContents());
         ((ErrandViewHolder)viewHolder).btn_accpet.setOnClickListener(new View.OnClickListener() {
             @Override

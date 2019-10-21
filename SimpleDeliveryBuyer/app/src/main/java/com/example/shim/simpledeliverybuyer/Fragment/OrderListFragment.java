@@ -23,10 +23,8 @@ public class OrderListFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_order_list, container, false);
         init(view);
-
         return view;
     }
-
 
     public void init(View view){
         recyclerView = view.findViewById(R.id.orderList_recyclerView);
