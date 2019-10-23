@@ -608,7 +608,7 @@ public final class R {
         public static final int abc_search_dropdown_item_icons_2line = 0x7f0c0018;
         public static final int abc_search_view = 0x7f0c0019;
         public static final int abc_select_dialog_material = 0x7f0c001a;
-        public static final int activity_sign_up = 0x7f0c001f;
+        public static final int activity_sign_up = 0x7f0c0020;
         public static final int notification_media_action = 0x7f0c0044;
         public static final int notification_media_cancel_action = 0x7f0c0045;
         public static final int notification_template_big_media = 0x7f0c0046;

@@ -1513,6 +1513,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_chat
+layout activity_errand_detail
 layout activity_index
 layout activity_main
 layout activity_my_profile

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:background="#98b8d7"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/orderDetail_iv_img"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+    <TextView
+        android:layout_marginTop="30dp"
+        android:id="@+id/orderDetail_tv_address"
+        android:layout_gravity="center_horizontal"
+        android:text="인천광역시 남동구 논현동 꿈에그린아파트"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/orderDetail_tv_errandContent"
+        android:layout_gravity="center_horizontal"
+        android:text="심부름 상세내용"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/orderDetail_iv_call"
+            android:background="#2cc121"
+            android:src="@drawable/baseline_call_black_24dp"
+            android:layout_marginRight="30dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+        <ImageView
+            android:id="@+id/orderDetail_iv_chat"
+            android:src="@drawable/baseline_chat_black_24dp"
+            android:background="#f5da24"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+    </LinearLayout>
+
+</LinearLayout>

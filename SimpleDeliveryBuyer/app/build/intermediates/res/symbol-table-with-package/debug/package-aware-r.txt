@@ -1521,6 +1521,7 @@ layout abc_tooltip
 layout activity_chat
 layout activity_index
 layout activity_main
+layout activity_order_detail
 layout activity_sign_up
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -1538,7 +1539,6 @@ layout design_navigation_menu_item
 layout design_text_input_password_icon
 layout errand_list_item
 layout fragment_order
-layout fragment_order_detail
 layout fragment_order_list
 layout fragment_pick_address
 layout item_message_received

@@ -1,9 +1,8 @@
 package com.example.shim.simpledeliverydeliverer.Adapter;
 
 import android.content.Context;
-import android.os.Bundle;
+import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.shim.simpledeliverydeliverer.Fragment.ErrandDetailFragment;
+import com.example.shim.simpledeliverydeliverer.ErrandDetailActivity;
 import com.example.shim.simpledeliverydeliverer.Model.Errand;
 import com.example.shim.simpledeliverydeliverer.Network.ErrandService;
 import com.example.shim.simpledeliverydeliverer.R;
@@ -25,7 +24,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MyErrandAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<Errand> errandList;
@@ -81,14 +79,9 @@ public class MyErrandAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Bundle에 선택된 errand를 넘겨줌
-                Bundle args = new Bundle();
-                args.putSerializable("errand", errandList.get(i));
-
-                ErrandDetailFragment errandDetailFragment = new ErrandDetailFragment();
-                errandDetailFragment.setArguments(args);
-                ((AppCompatActivity)context).getSupportFragmentManager().
-                        beginTransaction().replace(R.id.index_frameLayout, errandDetailFragment).commit();
+                Intent intent = new Intent(context, ErrandDetailActivity.class);
+                intent.putExtra("errand", errandList.get(i));
+                context.startActivity(intent);
             }
         });
         ((ErrandViewHolder) viewHolder).tv_address.setText(errand.getDestination());

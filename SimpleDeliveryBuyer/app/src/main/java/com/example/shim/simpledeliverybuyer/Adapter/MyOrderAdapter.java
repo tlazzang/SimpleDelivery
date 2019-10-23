@@ -2,9 +2,8 @@ package com.example.shim.simpledeliverybuyer.Adapter;
 
 
 import android.content.Context;
-import android.os.Bundle;
+import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,11 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.shim.simpledeliverybuyer.Fragment.OrderDetailFragment;
 import com.example.shim.simpledeliverybuyer.Model.Errand;
 import com.example.shim.simpledeliverybuyer.Network.ErrandService;
+import com.example.shim.simpledeliverybuyer.OrderDetailActivity;
 import com.example.shim.simpledeliverybuyer.R;
 import com.example.shim.simpledeliverybuyer.RetrofitInstance;
 
@@ -27,7 +25,6 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -85,14 +82,9 @@ public class MyOrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Bundle에 선택된 errand를 넘겨줌
-                Bundle args = new Bundle();
-                args.putSerializable("errand", errandList.get(i));
-
-                OrderDetailFragment orderDetailFragment = new OrderDetailFragment();
-                orderDetailFragment.setArguments(args);
-                ((AppCompatActivity)context).getSupportFragmentManager().
-                        beginTransaction().replace(R.id.index_frameLayout, orderDetailFragment).addToBackStack("OrderListFragment").commit();
+                Intent intent = new Intent(context, OrderDetailActivity.class);
+                intent.putExtra("errand", errandList.get(i));
+                context.startActivity(intent);
             }
         });
 
