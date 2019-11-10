@@ -120,7 +120,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         void bind(Message message) {
             messageText.setText(message.getContents());
 
-            Date date = new Date(message.getTimestamp());
+            Date date = new Date(message.getTimestamp());;
             SimpleDateFormat format = new SimpleDateFormat("HH:mm");
             String now = format.format(date);
             timeText.setText(now);

@@ -15,7 +15,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="677f67f5-81a3-4fb1-9376-d29ea37faed4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../SimpleDeliveryDeliverer/app/src/main/java/com/example/shim/simpledeliverydeliverer/Adapter/ErrandAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SimpleDeliveryDeliverer/app/src/main/java/com/example/shim/simpledeliverydeliverer/Adapter/ErrandAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SimpleDeliveryDeliverer/app/src/main/java/com/example/shim/simpledeliverydeliverer/Adapter/MessageAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SimpleDeliveryDeliverer/app/src/main/java/com/example/shim/simpledeliverydeliverer/Adapter/MessageAdapter.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -324,6 +323,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21387696" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
