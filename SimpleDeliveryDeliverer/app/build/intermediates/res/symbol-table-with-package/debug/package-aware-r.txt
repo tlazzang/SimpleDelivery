@@ -1535,7 +1535,6 @@ layout design_navigation_menu_item
 layout design_text_input_password_icon
 layout errand_list_item
 layout fragment_errand
-layout fragment_errand_detail
 layout fragment_my_errand
 layout fragment_my_profile
 layout item_message_received

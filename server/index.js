@@ -214,7 +214,7 @@ app.post("/errand", middleware.checkToken, function(req, res) {
                     title: "Hello Node",
                     body: "새 심부름이 등록되었습니다.",
                     sound: "default",
-                    click_action: "FCM_PLUGIN_ACTIVITY",
+                    click_action: "OPEN_ACTIVITY",
                     icon: "fcm_push_icon"
                 },
                 // 메시지 중요도
@@ -401,7 +401,7 @@ app.post("/fcm", middleware.checkToken, function(req, res) {
                 title: "Hello Node",
                 body: "Node로 발송하는 Push 메시지 입니다.",
                 sound: "default",
-                click_action: "FCM_PLUGIN_ACTIVITY",
+                click_action: "OPEN_ACTIVITY",
                 icon: "fcm_push_icon"
             },
             // 메시지 중요도

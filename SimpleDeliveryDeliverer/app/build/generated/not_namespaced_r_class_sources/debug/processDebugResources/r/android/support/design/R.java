@@ -1226,18 +1226,18 @@ public final class R {
         public static final int design_navigation_menu = 0x7f0c002e;
         public static final int design_navigation_menu_item = 0x7f0c002f;
         public static final int design_text_input_password_icon = 0x7f0c0030;
-        public static final int mtrl_layout_snackbar = 0x7f0c0038;
-        public static final int mtrl_layout_snackbar_include = 0x7f0c0039;
-        public static final int notification_action = 0x7f0c0045;
-        public static final int notification_action_tombstone = 0x7f0c0046;
-        public static final int notification_template_custom_big = 0x7f0c004d;
-        public static final int notification_template_icon_group = 0x7f0c004e;
-        public static final int notification_template_part_chronometer = 0x7f0c0052;
-        public static final int notification_template_part_time = 0x7f0c0053;
-        public static final int select_dialog_item_material = 0x7f0c0054;
-        public static final int select_dialog_multichoice_material = 0x7f0c0055;
-        public static final int select_dialog_singlechoice_material = 0x7f0c0056;
-        public static final int support_simple_spinner_dropdown_item = 0x7f0c0057;
+        public static final int mtrl_layout_snackbar = 0x7f0c0037;
+        public static final int mtrl_layout_snackbar_include = 0x7f0c0038;
+        public static final int notification_action = 0x7f0c0044;
+        public static final int notification_action_tombstone = 0x7f0c0045;
+        public static final int notification_template_custom_big = 0x7f0c004c;
+        public static final int notification_template_icon_group = 0x7f0c004d;
+        public static final int notification_template_part_chronometer = 0x7f0c0051;
+        public static final int notification_template_part_time = 0x7f0c0052;
+        public static final int select_dialog_item_material = 0x7f0c0053;
+        public static final int select_dialog_multichoice_material = 0x7f0c0054;
+        public static final int select_dialog_singlechoice_material = 0x7f0c0055;
+        public static final int support_simple_spinner_dropdown_item = 0x7f0c0056;
     }
     public static final class string {
         private string() {}

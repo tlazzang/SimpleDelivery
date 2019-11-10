@@ -173,12 +173,16 @@ ADDED from /Users/shim/Study/simple-delivery/SimpleDeliveryBuyer/app/src/main/An
 		ADDED from /Users/shim/Study/simple-delivery/SimpleDeliveryBuyer/app/src/main/AndroidManifest.xml:32:13-44
 	android:name
 		ADDED from /Users/shim/Study/simple-delivery/SimpleDeliveryBuyer/app/src/main/AndroidManifest.xml:31:13-41
-intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+intent-filter#action:name:OPEN_ACTIVITY+action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from /Users/shim/Study/simple-delivery/SimpleDeliveryBuyer/app/src/main/AndroidManifest.xml:33:13-37:29
 action#android.intent.action.MAIN
 ADDED from /Users/shim/Study/simple-delivery/SimpleDeliveryBuyer/app/src/main/AndroidManifest.xml:34:17-69
 	android:name
 		ADDED from /Users/shim/Study/simple-delivery/SimpleDeliveryBuyer/app/src/main/AndroidManifest.xml:34:25-66
+action#OPEN_ACTIVITY
+ADDED from /Users/shim/Study/simple-delivery/SimpleDeliveryBuyer/app/src/main/AndroidManifest.xml:35:17-55
+	android:name
+		ADDED from /Users/shim/Study/simple-delivery/SimpleDeliveryBuyer/app/src/main/AndroidManifest.xml:35:25-53
 category#android.intent.category.LAUNCHER
 ADDED from /Users/shim/Study/simple-delivery/SimpleDeliveryBuyer/app/src/main/AndroidManifest.xml:36:17-77
 	android:name

@@ -23,6 +23,7 @@ public class OrderDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order_detail);
 
         init();
+        tv_address.setText(errand.getDestination());
         tv_errandContent.setText(errand.getContents());
         iv_chat.setOnClickListener(new View.OnClickListener() {
             @Override

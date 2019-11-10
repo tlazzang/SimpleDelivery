@@ -71,8 +71,6 @@ public class MyOrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.errand_list_item, viewGroup, false);
-        Button button = view.findViewById(R.id.errandList_btn_accept);
-        button.setVisibility(View.GONE);
         return new ErrandViewHolder(view);
     }
 
@@ -87,7 +85,6 @@ public class MyOrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 context.startActivity(intent);
             }
         });
-
         ((ErrandViewHolder) viewHolder).bind(errand);
     }
 

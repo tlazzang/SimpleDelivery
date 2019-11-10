@@ -20,6 +20,7 @@ public class ErrandDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_errand_detail);
         init();
+        tv_address.setText(errand.getDestination());
         tv_errandContent.setText(errand.getContents());
         iv_chat.setOnClickListener(new View.OnClickListener() {
             @Override

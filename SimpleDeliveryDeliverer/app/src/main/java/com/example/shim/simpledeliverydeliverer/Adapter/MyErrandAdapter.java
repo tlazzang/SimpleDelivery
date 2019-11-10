@@ -16,7 +16,9 @@ import com.example.shim.simpledeliverydeliverer.Network.ErrandService;
 import com.example.shim.simpledeliverydeliverer.R;
 import com.example.shim.simpledeliverydeliverer.RetrofitInstance;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -84,9 +86,7 @@ public class MyErrandAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 context.startActivity(intent);
             }
         });
-        ((ErrandViewHolder) viewHolder).tv_address.setText(errand.getDestination());
-        ((ErrandViewHolder) viewHolder).tv_price.setText(String.valueOf(errand.getPrice()));
-        ((ErrandViewHolder) viewHolder).tv_contents.setText(errand.getContents());
+        ((ErrandViewHolder) viewHolder).bind(errand);
     }
 
     @Override
@@ -98,13 +98,23 @@ public class MyErrandAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         TextView tv_address;
         TextView tv_price;
         TextView tv_contents;
-        Button btn_accpet;
+        TextView tv_timestamp;
         public ErrandViewHolder(View view) {
             super(view);
             tv_address = view.findViewById(R.id.errandList_tv_address);
             tv_price = view.findViewById(R.id.errandList_tv_price);
             tv_contents = view.findViewById(R.id.errandList_tv_contents);
-            btn_accpet = view.findViewById(R.id.errandList_btn_accept);
+            tv_timestamp = view.findViewById(R.id.errandList_tv_timestamp);
+        }
+
+        public void bind(Errand errand){
+            tv_address.setText(errand.getDestination());
+            tv_price.setText(String.valueOf(errand.getPrice()));
+            tv_contents.setText(errand.getContents());
+            Date date = new Date(errand.getTimestamp());
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String now = format.format(date);
+            tv_timestamp.setText(now);
         }
     }
 }

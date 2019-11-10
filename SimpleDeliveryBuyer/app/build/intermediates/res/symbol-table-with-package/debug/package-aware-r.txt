@@ -1257,13 +1257,9 @@ id end
 id end_padder
 id enterAlways
 id enterAlwaysCollapsed
-id errandList_btn_accept
 id errandList_tv_address
-id errandList_tv_addressLabel
 id errandList_tv_contents
-id errandList_tv_contentsLabel
 id errandList_tv_price
-id errandList_tv_priceLabel
 id errandList_tv_timestamp
 id exitUntilCollapsed
 id expand_activities_button
