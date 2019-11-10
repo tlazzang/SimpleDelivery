@@ -75,14 +75,8 @@ public class ErrandAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, final int i) {
         final Errand errand = errandList.get(i);
 
-        Date date = new Date(errand.getTimestamp());
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String now = format.format(date);
+        ((ErrandViewHolder)viewHolder).bind(errand);
 
-        ((ErrandViewHolder)viewHolder).tv_timestamp.setText(now);
-        ((ErrandViewHolder)viewHolder).tv_address.setText(errand.getDestination());
-        ((ErrandViewHolder)viewHolder).tv_price.setText(String.format("%,d", errand.getPrice()) + "원");
-        ((ErrandViewHolder)viewHolder).tv_contents.setText(errand.getContents());
         ((ErrandViewHolder)viewHolder).btn_accpet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -218,6 +212,16 @@ public class ErrandAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             tv_price = view.findViewById(R.id.errandList_tv_price);
             tv_contents = view.findViewById(R.id.errandList_tv_contents);
             btn_accpet = view.findViewById(R.id.errandList_btn_accept);
+        }
+        public void bind(Errand errand){
+            Date date = new Date(errand.getTimestamp());
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String now = format.format(date);
+
+            tv_timestamp.setText(now);
+            tv_address.setText(errand.getDestination());
+            tv_price.setText(String.format("%,d", errand.getPrice()) + "원");
+            tv_contents.setText(errand.getContents());
         }
     }
 }

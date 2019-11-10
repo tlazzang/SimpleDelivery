@@ -1,4 +1,4 @@
-#Sun Nov 10 17:13:55 KST 2019
+#Sun Nov 10 17:24:22 KST 2019
 base.0=/Users/shim/Study/simple-delivery/SimpleDeliveryDeliverer/app/build/intermediates/transforms/dexMerger/debug/8
 path.0=classes.dex
 renamed.0=classes.dex
