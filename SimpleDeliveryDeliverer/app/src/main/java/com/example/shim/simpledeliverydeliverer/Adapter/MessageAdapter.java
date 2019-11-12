@@ -89,14 +89,12 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         SentMessageHolder(View itemView) {
             super(itemView);
-
             messageText = (TextView) itemView.findViewById(R.id.text_message_body);
             timeText = (TextView) itemView.findViewById(R.id.text_message_time);
         }
 
         void bind(Message message) {
             messageText.setText(message.getContents());
-
             Date date = new Date(message.getTimestamp());
             SimpleDateFormat format = new SimpleDateFormat("HH:mm");
             String now = format.format(date);
@@ -110,7 +108,6 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         ReceivedMessageHolder(View itemView) {
             super(itemView);
-
             messageText = (TextView) itemView.findViewById(R.id.text_message_body);
             timeText = (TextView) itemView.findViewById(R.id.text_message_time);
             nameText = (TextView) itemView.findViewById(R.id.text_message_name);
@@ -119,8 +116,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         void bind(Message message) {
             messageText.setText(message.getContents());
-
-            Date date = new Date(message.getTimestamp());;
+            Date date = new Date(message.getTimestamp());
             SimpleDateFormat format = new SimpleDateFormat("HH:mm");
             String now = format.format(date);
             timeText.setText(now);
